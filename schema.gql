@@ -1,0 +1,30 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type FilterData {
+  schoolYears: [String!]
+  programFamilies: [String]
+  programs: [IdValueTupple]
+  schools: [IdValueTupple]
+  teachers: [IdValueTupple]
+  classes: [IdValueTupple]
+}
+
+type IdValueTupple {
+  id: String
+  value: String
+}
+
+type Query {
+  filters(districtID: String, schoolYear: String, programFamily: String, programIds: [String!], schoolIds: [String!], teacherIds: [String!], filterKeys: [FilterKeys!]): FilterData!
+}
+
+enum FilterKeys {
+  PROGRAMS
+  SCHOOLS
+  TEACHERS
+  CLASSES
+  SCHOOL_YEAR
+  PROGRAM_FAMILY
+}
