@@ -8,9 +8,10 @@ export class FiltersService {
     private readonly realizeReportsDataService: RealizeReportsDataService,
   ) {}
 
-  async getFilters(args: FilterArgs): Promise<FilterData> {
+  async getFilters(args: FilterArgs, token): Promise<FilterData> {
     const filterSuggestions = await this.realizeReportsDataService.getFilters(
       args,
+      token,
     );
     return {
       schoolYears: filterSuggestions.schoolYears,

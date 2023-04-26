@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { CoreModule } from './core/core.module';
 import { ScreenersAndDiagnosticsModule } from './screeners-and-diagnostics/screeners-and-diagnostics.module';
 
 @Module({
@@ -12,6 +13,7 @@ import { ScreenersAndDiagnosticsModule } from './screeners-and-diagnostics/scree
       autoSchemaFile: 'schema.gql',
     }),
     ScreenersAndDiagnosticsModule,
+    CoreModule,
   ],
   controllers: [AppController],
   providers: [AppService],

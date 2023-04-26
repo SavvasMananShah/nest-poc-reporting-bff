@@ -9,7 +9,7 @@ export class RealizeReportsDataService {
   private readonly logger = new Logger(RealizeReportsDataService.name);
   constructor(private readonly httpService: HttpService) {}
 
-  async getFilters(args: FilterArgs): Promise<FilterSuggestionsData> {
+  async getFilters(args: FilterArgs, token): Promise<FilterSuggestionsData> {
     const url = this.GET_FILTER_SUGGESTIONS_ROUTE(args.districtID);
     const body = {
       schoolYear: args.schoolYear,
@@ -21,7 +21,7 @@ export class RealizeReportsDataService {
     };
     const config = {
       headers: {
-        Authorization: `Bearer OYPW4LjkmSdXlwlIu0rfv1cBtPeA3CXiw40JAKSR3Gd5vOlHtmog7N2KC89y9olmhq1Z8bRmDj9iNgrKpYfDlKkoyc1G0yBxXEe5QzfEy72sfPvYomvOYNjYylcs3O0HTjOOy4GSgcf46sxghMvdS2Y6qMXKu6SEQNwiMlmQcJSQ7AXffmfu6plqvj7RlsWKAl8BbxFQOmqcK5AWKt8ljAQGU5KJdKMoneQJ8XF7V5XyrxNPIdylAnscFpj`,
+        Authorization: `Bearer ${token}`,
       },
     };
     const { data } = await firstValueFrom(

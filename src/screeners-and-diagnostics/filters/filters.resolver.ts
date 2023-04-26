@@ -1,4 +1,4 @@
-import { Args, Query, Resolver } from '@nestjs/graphql';
+import { Args, Context, Query, Resolver } from '@nestjs/graphql';
 import { FilterArgs, FilterData } from './filters.schema';
 import { FiltersService } from './filters.service';
 
@@ -7,7 +7,7 @@ export class FiltersResolver {
   constructor(private readonly filtersService: FiltersService) {}
 
   @Query(() => FilterData)
-  async filters(@Args() args: FilterArgs): Promise<FilterData> {
-    return this.filtersService.getFilters(args);
+  async filters(@Args() args: FilterArgs, @Context() ctx): Promise<FilterData> {
+    return this.filtersService.getFilters(args, ctx.req.userScope.token);
   }
 }
