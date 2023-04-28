@@ -1,10 +1,11 @@
 import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { AuthGuard } from './auth/auth.guard';
+import { DataSourceModule } from './data-source/data-source.module';
 import { RbsAuthService } from './rbs-auth/rbs-auth.service';
 
 @Module({
-  imports: [HttpModule],
+  imports: [HttpModule, DataSourceModule],
   providers: [
     RbsAuthService,
     {
